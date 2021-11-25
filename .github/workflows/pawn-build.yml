@@ -1,0 +1,29 @@
+name: pawn-3.2-plus compile
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  x86_64-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Generation make files from CMake
+      run: cmake .
+    - name: make
+      run: make
+    - name: Check the version
+      run: file ./amx/pawnrun
+  x86_32-build:
+    runs-on: paulproteus/ubuntu-18.04-x86@0.1
+    steps:
+    - uses: actions/checkout@v2
+    - name: Generation make files from CMake
+      run: cmake .
+    - name: make
+      run: make
+    - name: Check the version
+      run: file ./amx/pawnrun
