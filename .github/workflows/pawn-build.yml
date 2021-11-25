@@ -18,12 +18,15 @@ jobs:
     - name: Check the version
       run: file ./amx/pawnrun
   x86_32-build:
-    runs-on: paulproteus/ubuntu-18.04-x86@0.1
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Generation make files from CMake
-      run: cmake .
-    - name: make
-      run: make
-    - name: Check the version
-      run: file ./amx/pawnrun
+      - name: Generation make files from CMake
+        uses: paulproteus/ubuntu-18.04-x86@0.1
+        with:
+          command: cmake .
+      - name: make
+        uses: paulproteus/ubuntu-18.04-x86@0.1
+        with:
+          command: make
+      - name: Read GCC information from a file, x86_64
+        run: file ./amx/pawnrun
