@@ -2,9 +2,9 @@ name: pawn-3.2-plus compile
 
 on:
   push:
-    branches: [ master ]
+    branches: [ Disinterpreter-cicd-patch-1 ]
   pull_request:
-    branches: [ master ]
+    branches: [ Disinterpreter-cicd-patch-1 ]
 
 jobs:
   x86_64-build:
