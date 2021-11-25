@@ -23,14 +23,9 @@ jobs:
       - name: download
         uses: paulproteus/ubuntu-18.04-x86@0.1
         with:
-          command: apt-get update && apt-get -y install gcc cmake make
-      - name: Generation make files from CMake
-        uses: paulproteus/ubuntu-18.04-x86@0.1
-        with:
-          command: cmake .
-      - name: make
-        uses: paulproteus/ubuntu-18.04-x86@0.1
-        with:
-          command: make
+          command: |
+                    apt-get update && apt-get -y install gcc cmake make
+                    cmake .
+                    make
       - name: Read GCC information from a file, x86_64
         run: file ./amx/pawnrun
